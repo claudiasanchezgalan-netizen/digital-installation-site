@@ -461,7 +461,6 @@
       ],
       split: 4,
     },
-    moodboard: { title: "Moodboard", images: [] },
   };
 
   const openFolder = (folderId) => {
