@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Más allá de lo visible — Instalación digital</title>
+  <meta name="description"
+    content="Más allá de lo visible es una instalación documental que explora la identidad a través de la imagen, la memoria y la ficción poética. Experimenta la versión digital." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap" rel="stylesheet" />
+
+  <!-- Smooth Scroll (Lenis) -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="is-locked">
+
+  <!-- ======================== INTRO ======================== -->
+  <div class="intro" id="intro" aria-live="polite">
+    <div class="flash" id="flash" aria-hidden="true"></div>
+    <div class="intro-glow" id="introGlow"></div>
+
+    <!-- Pantalla 1 — Póster -->
+    <section class="intro-view intro-poster is-active" id="introPoster" aria-label="Pantalla de título">
+      <img src="assets/title-poster.png" alt="Más allá de lo visible" class="poster-image" id="posterImage" />
+      <button type="button" class="btn btn--intro" id="introAccess">Acceder</button>
+    </section>
+
+    <!-- Pantalla 2 — Preguntas de identidad -->
+    <section class="intro-view identity-view" id="identityView" aria-label="Acceso de identidad">
+      <div class="identity-modal" id="identityModal">
+        <img src="assets/threshold-image.png" alt="Fotografía de infancia" class="identity-photo" />
+
+        <form id="identityForm" class="identity-form" novalidate>
+          <label class="question">
+            <span class="question-label">¿Quién eres?</span>
+            <input type="text" name="quien" autocomplete="off" placeholder="…" />
+          </label>
+          <label class="question">
+            <span class="question-label">¿De dónde vienes?</span>
+            <input type="text" name="donde" autocomplete="off" placeholder="…" />
+          </label>
+          <label class="question">
+            <span class="question-label">¿Para qué estás hecho/a?</span>
+            <input type="text" name="para" autocomplete="off" placeholder="…" />
+          </label>
+
+          <button type="submit" class="btn btn--modal" id="modalAccess">No sé</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Pantalla 3 — Vídeo del documental + acceso al proyecto -->
+    <section class="intro-view video-view" id="videoView" aria-label="Vídeo del documental">
+      <div class="video-screen">
+        <div class="video-single">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_AQUI"
+            title="Más allá de lo visible — Documental"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <button type="button" class="btn btn--proyecto" id="btnProyecto">Sobre el proyecto</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======================== SITIO PRINCIPAL ======================== -->
+  <main class="site" id="site" aria-hidden="true">
+
+    <!-- ======================== SALA BLANCA (Sala de las Estrellas) ======================== -->
+    <div class="white-room" id="whiteRoom">
+      <button class="panel-back white-room-back" id="whiteRoomBack" aria-label="Volver al inicio">← Volver</button>
+      <div class="stars-scene">
+        <!-- SVG overlay y fondo combinado bajo una misma vista responsiva y recorte sincronizado -->
+        <svg viewBox="0 0 1920 1440" preserveAspectRatio="xMidYMid slice" class="stars-overlay">
+          <!-- Fondo base limpio horizontal a pantalla completa (Web 6) -->
+          <image href="assets/web 6 .jpg" x="0" y="0" width="1920" height="1440" class="stars-scene-bg" />
+
+          <!-- Estrella Izquierda: Instalación -->
+          <g class="hotspot star-group" id="hotSilla" data-section="secInstalacion" tabindex="0" role="button" aria-label="Instalación">
+            <!-- Capa de brillo duplicada con blur por CSS -->
+            <image href="assets/estrella_izq.png" x="0" y="0" width="1920" height="1440" class="star-glow star-glow-orange" pointer-events="none" />
+            <!-- Capa base de la estrella -->
+            <image href="assets/estrella_izq.png" x="0" y="0" width="1920" height="1440" class="star-base star-base-left" pointer-events="none" />
+            <!-- Etiqueta a la izquierda de la estrella -->
+            <text x="320" y="706" text-anchor="middle" class="star-svg-label star-label-orange" pointer-events="auto">Instalación</text>
+            <!-- Hotspot de colisión independiente ajustado a la estrella para evitar solapamientos -->
+            <circle cx="574" cy="696" r="80" class="star-hotspot" pointer-events="auto" />
+          </g>
+
+          <!-- Estrella Central: Proyecto -->
+          <g class="hotspot star-group" id="hotLibro" data-section="secContexto" tabindex="0" role="button" aria-label="Proyecto">
+            <image href="assets/estrella_cen.png" x="0" y="0" width="1920" height="1440" class="star-glow star-glow-green" pointer-events="none" />
+            <image href="assets/estrella_cen.png" x="0" y="0" width="1920" height="1440" class="star-base star-base-center" pointer-events="none" />
+            <!-- Etiqueta encima de la estrella -->
+            <text x="950" y="240" text-anchor="middle" class="star-svg-label star-label-green" pointer-events="auto">Proyecto</text>
+            <!-- Hotspots de colisión independientes superpuestos para cubrir la estrella alta de Proyecto de arriba a abajo -->
+            <circle cx="950" cy="420" r="150" class="star-hotspot" pointer-events="auto" />
+            <circle cx="950" cy="580" r="160" class="star-hotspot" pointer-events="auto" />
+          </g>
+
+          <!-- Estrella Derecha: Galería -->
+          <g class="hotspot star-group" id="hotCamara" data-section="secGaleria" tabindex="0" role="button" aria-label="Galería">
+            <image href="assets/estrella_der.png" x="0" y="0" width="1920" height="1440" class="star-glow star-glow-yellow" pointer-events="none" />
+            <image href="assets/estrella_der.png" x="0" y="0" width="1920" height="1440" class="star-base star-base-right" pointer-events="none" />
+            <!-- Etiqueta a la derecha de la estrella -->
+            <text x="1580" y="606" text-anchor="middle" class="star-svg-label star-label-yellow" pointer-events="auto">Galería</text>
+            <!-- Hotspot de colisión independiente ajustado a la estrella para evitar solapamientos -->
+            <circle cx="1340" cy="596" r="80" class="star-hotspot" pointer-events="auto" />
+          </g>
+        </svg>
+
+        <!-- Indicador inferior elegante: Arial Cursiva (HTML para evitar recortes del aspect-ratio del SVG) -->
+        <p class="stars-hint-text">Pulsa sobre las estrellas para descubrir más</p>
+      </div>
+    </div><!-- /white-room -->
+
+
+    <!-- ======================== SECTION PANELS (hidden, revealed on object click) ======================== -->
+
+    <!-- Documental -->
+    <div class="section-panel" id="secDocumental" aria-hidden="true">
+      <button class="panel-back" aria-label="Volver a la sala">← Volver</button>
+      <div class="panel-content">
+        <section class="section section--hero" id="documental">
+          <div class="section-head">
+            <h2 class="section-title">Documental <span class="section-index">01</span></h2>
+          </div>
+          <div class="installation-layout">
+            <aside class="chapter-box" aria-label="Índice de capítulos">
+              <h3 class="chapter-title"><span class="chapter-title-accent">Índice</span></h3>
+              <ol class="chapter-list">
+                <li><span class="chapter-num">I</span> Introducción</li>
+                <li><span class="chapter-num">II</span> ¿De dónde vienes?</li>
+                <li><span class="chapter-num">III</span> ¿Quién eres?</li>
+                <li><span class="chapter-num">IV</span> ¿Para qué estás hecho?</li>
+                <li><span class="chapter-num">V</span> Cierre</li>
+              </ol>
+            </aside>
+            <div class="video-wrap">
+              <img src="assets/documental-poster.jpg" alt="Más allá de lo visible — Documental"
+                class="documental-img" />
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Experiencia -->
+    <div class="section-panel" id="secExperiencia" aria-hidden="true">
+      <button class="panel-back" aria-label="Volver a la sala">← Volver</button>
+      <div class="panel-content">
+        <section class="section" id="experiencia">
+          <div class="section-head">
+            <h2 class="section-title">Experiencia <span class="section-index">02</span></h2>
+          </div>
+          <div class="experiencia-layout">
+            <div class="experiencia-text">
+              <p class="form-intro">
+                Tras experimentar la instalación, te invitamos a compartir tus reflexiones.
+                Tu perspectiva se convierte en parte de la obra.
+              </p>
+              <p class="camera-hint">Haz clic en la cámara para compartir tu experiencia</p>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdexample/viewform" target="_blank" rel="noopener"
+              class="camera-link" id="cameraLink" aria-label="Abrir formulario de experiencia">
+              <img src="assets/camera.png" alt="Cámara — acceso al formulario" class="camera-img" />
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Contexto (Proyecto) -->
+    <div class="section-panel" id="secContexto" aria-hidden="true">
+      <button class="panel-back" aria-label="Volver a la sala">← Volver</button>
+      <div class="panel-content">
+        <section class="section" id="contexto">
+          <div class="section-head">
+            <h2 class="section-title">Proyecto</h2>
+          </div>
+          <div class="contexto-layout-single">
+            <div class="contexto-text-single">
+              <p>
+                Más allá de lo visible nace de tres preguntas, las cuales me llevan atormentando los últimos 6 años de mi vida, y lo harán supongo, hasta que me funda con lo tangible y deje de intentar resolverlas.
+              </p>
+              <p>
+                Es una obra documental sobre la identidad que además ocupa un espacio concreto ya que pretende ser habitado. A través de la imagen no se pretende resolver; la imagen es el medio, un medio de activación para que, desde hoy, compartas estas preguntas conmigo.
+              </p>
+
+              <p class="contexto-accent-row">
+                ¿De dónde vengo? &nbsp;&nbsp;&nbsp;&nbsp; ¿Quién soy? &nbsp;&nbsp;&nbsp;&nbsp; ¿Para qué estoy hecha?
+              </p>
+
+              <p>
+                Es un proyecto utópico que nunca tendrá un final. Es un bucle eterno de perseguir preguntas. Hubo un día en que dije que era el proyecto de mi vida y un profe se rió; es anecdótico, pero es la verdad. Es el proyecto de mi vida, el proyecto de mi vida será, es y ha sido siempre intentar resolver preguntas sin respuestas y escribir sobre ellas. Supongo que el proyecto de mi vida es ser poeta y seguir viendo, siempre, más allá de lo visible.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Instalación -->
+    <div class="section-panel" id="secInstalacion" aria-hidden="true">
+      <button class="panel-back" aria-label="Volver a la sala">← Volver</button>
+      <div class="panel-content">
+        <section class="section" id="instalacion">
+          <div class="section-head">
+            <h2 class="section-title">Instalación</h2>
+          </div>
+          <div class="installation-layout installation-layout-single">
+            <div class="instalacion-text instalacion-text-single">
+              <p>
+                La instalación física propone un espacio inmersivo donde convergen la poesía y la filosofía con la imagen. Un escenario íntimo que reproduce la atmósfera personal, poblado de pequeños resquicios de recuerdos y fragmentos de memoria.
+              </p>
+              <p>
+                Cada elemento de la sala funciona como una capa narrativa.
+              </p>
+              <p>
+                El visitante es invitado a detenerse, a observar desde cerca, a habitar el tiempo de la obra.
+              </p>
+
+              <hr class="instalacion-separator" />
+
+              <p class="instalacion-note">
+                Este apartado será actualizado con entradas cada vez que la obra se instale.
+              </p>
+              <p class="instalacion-entry">
+                <strong>09 de Junio 2026</strong><br>
+                Primera instalación del documental Más allá de lo vivible, en la Facultad de Bellas artes de la UPV.
+              </p>
+              <p class="instalacion-entry">
+                La sensación de la primera exposición de Más allá de lo visible podría resumirse en 3 conceptos: vulnerabilidad, comunidad y gratitud. Tras estos últimos meses con la producción fue súper gratificante poder dar el paso y montar la instalación de la obra. Desde el primer momento me emocionó mucho ver cómo por fin, esas cuestiones, ocupaban un lugar fuera de mi cabeza.
+              </p>
+              <p class="instalacion-entry">
+                A cerca de la interacción con el público y en la faceta más evolutiva de la obra, se generó un archivo sobre todo gráfico a nivel pictórico. Los participantes en estas sesiones canalizaron sus emociones y respuestas a través de pictogramas o dibujos. Por otro lado, en cuanto al vídeo de archivo que se recopiló en la estancia habilitada para que se compartieran cuestiones se generó un silencio inmenso ante el desconocimiento. Me sorprendió cómo al final el silencio se mantuvo en todo momento una vez acabado ya el vídeo. Se generó un ambiente de respeto y sobre todo de sororidad ante el proyecto.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Galería -->
+    <div class="section-panel" id="secGaleria" aria-hidden="true">
+      <button class="panel-back" aria-label="Volver a la sala">← Volver</button>
+      <div class="panel-content">
+        <section class="section" id="galeria">
+          <div class="section-head">
+            <h2 class="section-title">Galería</h2>
+          </div>
+          <div class="folder-grid" id="folderGrid">
+            <div class="folder-item" data-folder="rodaje" role="button" tabindex="0"
+              aria-label="Abrir carpeta Fotos rodaje plató 30.01">
+              <div class="folder-icon">
+                <img src="assets/carpeta .png" alt="Carpeta" />
+              </div>
+              <p class="folder-name">Fotos rodaje plató 30.01</p>
+            </div>
+
+            <div class="folder-item" data-folder="instalacion" role="button" tabindex="0"
+              aria-label="Abrir carpeta Fotos instalación">
+              <div class="folder-icon">
+                <img src="assets/carpeta .png" alt="Carpeta" />
+              </div>
+              <p class="folder-name">Fotos instalación</p>
+            </div>
+
+            <div class="folder-item" data-folder="archivo" role="button" tabindex="0"
+              aria-label="Abrir carpeta Fotos de archivo">
+              <div class="folder-icon">
+                <img src="assets/carpeta .png" alt="Carpeta" />
+              </div>
+              <p class="folder-name">Fotos de archivo</p>
+            </div>
+
+            <div class="folder-item" data-folder="moodboard" role="button" tabindex="0"
+              aria-label="Abrir carpeta Moodboard">
+              <div class="folder-icon">
+                <img src="assets/carpeta .png" alt="Carpeta" />
+              </div>
+              <p class="folder-name">Moodboard</p>
+            </div>
+          </div>
+
+          <!-- Overlay carpeta abierta -->
+          <div class="folder-overlay" id="folderOverlay" aria-hidden="true">
+            <div class="folder-overlay-header">
+              <button class="folder-back" id="folderClose" aria-label="Volver a las carpetas">← Volver</button>
+              <h3 class="folder-overlay-title" id="folderOverlayTitle"></h3>
+            </div>
+            <div class="folder-overlay-body" id="folderOverlayBody">
+              <p class="folder-empty">Sin imágenes aún — próximamente</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Sobre mí -->
+    <div class="section-panel" id="secSobreMi" aria-hidden="true">
+      <button class="panel-back" aria-label="Volver a la sala">← Volver</button>
+      <div class="panel-content">
+        <section class="section" id="sobre-mi">
+          <div class="section-head">
+            <h2 class="section-title">Sobre mí <span class="section-index">06</span></h2>
+          </div>
+          <div class="about-layout">
+            <div class="about-text">
+              <p>
+                Claudia Sánchez Galán trabaja entre lo audiovisual y lo instalativo.
+                Su práctica se centra en la memoria, la infancia y los límites de la representación
+                desde una perspectiva editorial y contemporánea.
+              </p>
+              <p>
+                Este proyecto es su Trabajo de Fin de Grado (TFG), un documental en cinco capítulos
+                que despliega la identidad a través de la imagen, el sonido y el espacio.
+              </p>
+            </div>
+            <div class="about-aside">
+              <div class="about-detail">
+                <p class="label">Disciplina</p>
+                <p class="value">Documental · Instalación · Experiencia digital</p>
+              </div>
+              <div class="about-detail">
+                <p class="label">Medio</p>
+                <p class="value">Vídeo · Fotografía · Espacio 3D</p>
+              </div>
+              <div class="about-detail">
+                <p class="label">Año</p>
+                <p class="value">2026</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Pie de página (visible inside panels) -->
+    <footer class="site-footer" id="siteFooter" style="display:none;">
+      <div class="footer-left">
+        <p class="footer-mark">Más allá de lo visible</p>
+      </div>
+      <div class="footer-right">
+        <p class="footer-meta">© 2026 Claudia Sánchez Galán</p>
+        <p class="footer-meta">Trabajo de Fin de Grado</p>
+      </div>
+    </footer>
+
+  </main>
+
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>
