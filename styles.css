@@ -1693,7 +1693,9 @@ a {
 
   /* --- Identity modal wider --- */
   .identity-modal {
-    width: 94vw;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
   }
 
   .identity-photo {
@@ -1945,7 +1947,8 @@ a {
 
   /* --- Identity modal --- */
   .identity-modal {
-    width: 96vw;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .identity-photo {
