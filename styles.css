@@ -1732,35 +1732,41 @@ a {
   }
 
   .white-room {
-    background: #fcfcfc; /* Clean white for the letterbox area */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #060608;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
   }
 
   .stars-scene {
-    position: relative;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4/3;
-  }
-
-  .stars-overlay {
-    /* Ensure SVG fills the new predictable 4:3 container */
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
   }
 
-  /* --- SVG labels: Perfectly spaced horizontal row --- */
-  .star-svg-label {
-    font-size: 32px;
-    letter-spacing: 0.12em;
-    font-weight: 500;
+  .stars-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: block;
   }
 
-  /* Move Instalación to exactly X=450 (Translate X: 450 - 320 = 130) */
+  /* --- SVG labels: Perfectly spaced for cropped slice view --- */
+  .star-svg-label {
+    font-size: 38px;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    -webkit-text-size-adjust: 100%; /* Prevent Safari from artificially enlarging text */
+  }
+
+  /* Move Instalación to exactly X=760 (Translate X: 760 - 320 = 440) */
   .star-label-orange {
-    transform: translate(130px, -556px);
+    transform: translate(440px, -556px);
   }
 
   /* Move Proyecto to exactly X=1000 (Translate X: 1000 - 950 = 50) */
@@ -1768,9 +1774,9 @@ a {
     transform: translate(50px, -90px);
   }
 
-  /* Move Galería to exactly X=1510 (Translate X: 1510 - 1580 = -70) */
+  /* Move Galería to exactly X=1200 (Translate X: 1200 - 1580 = -380) */
   .star-label-yellow {
-    transform: translate(-70px, -456px);
+    transform: translate(-380px, -456px);
   }
 
   /* --- Hint text --- */
