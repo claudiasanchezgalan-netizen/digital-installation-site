@@ -1198,11 +1198,11 @@ a {
   cursor: pointer;
 }
 
-/* Landscape images in second row: fill line equally, cropped */
+/* Landscape images in second row: fill line equally, uncropped */
 .folder-overlay-body img.is-landscape {
   flex: 1 1 0;
   min-width: 0;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .folder-overlay-body img:hover {
@@ -1850,13 +1850,13 @@ a {
 
   .folder-overlay-body img {
     height: auto;
-    width: calc(50% - 0.5rem);
-    max-height: 30vh;
-    object-fit: cover;
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
   }
 
   .folder-overlay-body img.is-landscape {
-    width: calc(50% - 0.5rem);
+    width: 100%;
     flex: none;
   }
 
