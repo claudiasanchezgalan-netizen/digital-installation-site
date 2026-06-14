@@ -1756,22 +1756,22 @@ a {
     display: block;
   }
 
-  /* --- SVG labels: Perfectly spaced for cropped slice view --- */
+  /* --- SVG labels: Smaller to avoid overlap and perfectly spaced --- */
   .star-svg-label {
-    font-size: 38px;
-    letter-spacing: 0.1em;
+    font-size: 26px;
+    letter-spacing: 0.15em;
     font-weight: 500;
-    -webkit-text-size-adjust: 100%; /* Prevent Safari from artificially enlarging text */
+    -webkit-text-size-adjust: 100%;
   }
 
-  /* Move Instalación to exactly X=760 (Translate X: 760 - 320 = 440) */
+  /* Move Instalación to exactly X=720 (Translate X: 720 - 320 = 400) */
   .star-label-orange {
-    transform: translate(440px, -556px);
+    transform: translate(400px, -556px);
   }
 
-  /* Move Proyecto to exactly X=1000 (Translate X: 1000 - 950 = 50) */
+  /* Move Proyecto to exactly X=960 (Translate X: 960 - 950 = 10) */
   .star-label-green {
-    transform: translate(50px, -90px);
+    transform: translate(10px, -90px);
   }
 
   /* Move Galería to exactly X=1200 (Translate X: 1200 - 1580 = -380) */
