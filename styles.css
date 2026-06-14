@@ -1726,30 +1726,33 @@ a {
     padding: clamp(3.5rem, 8vh, 5rem) var(--gutter) clamp(2rem, 5vh, 3rem);
   }
 
-  /* --- Bring stars inwards to stay visible on tall portrait screens --- */
+  /* --- Move stars to the sky area to avoid overlapping the child and stay visible --- */
   #hotSilla {
-    transform: translate(260px, 0);
+    transform: translate(180px, -350px);
   }
   
   #hotCamara {
-    transform: translate(-260px, 0);
+    transform: translate(-190px, -250px);
   }
 
   .white-room {
     background: #060608;
   }
 
-  /* --- Star SVG labels --- */
+  /* --- Star SVG labels larger for mobile (counteracts SVG scaling) --- */
   .star-svg-label {
-    font-size: 16px;
-    letter-spacing: 0.15em;
+    font-size: 34px;
+    letter-spacing: 0.12em;
+    font-weight: 500;
   }
 
   /* --- Hint text --- */
   .stars-hint-text {
-    font-size: 13px;
+    font-size: 14px;
     bottom: 24px;
     padding: 0 1rem;
+    font-weight: 400;
+    opacity: 0.7;
   }
 
   /* --- Video single responsive --- */
@@ -1903,24 +1906,24 @@ a {
     max-height: 50vh;
   }
 
-  /* --- Bring stars inwards to stay visible on tall portrait screens --- */
+  /* --- Move stars to the sky area on very small screens --- */
   #hotSilla {
-    transform: translate(360px, 40px);
+    transform: translate(220px, -380px);
   }
   
   #hotCamara {
-    transform: translate(-380px, 30px);
+    transform: translate(-220px, -280px);
   }
 
-  /* --- Star labels even smaller --- */
+  /* --- Star labels --- */
   .star-svg-label {
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    font-size: 28px;
+    letter-spacing: 0.1em;
   }
 
   .stars-hint-text {
-    font-size: 10px;
-    bottom: 10px;
+    font-size: 12px;
+    bottom: 16px;
   }
 
   /* --- Identity modal --- */
