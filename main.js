@@ -157,6 +157,25 @@
     }, 200);
   };
 
+  // Step 3 → Step 2: Back to identity screen
+  const videoBack = document.getElementById("videoBack");
+  if (videoBack && identityView && videoView) {
+    videoBack.addEventListener("click", () => {
+      // Flash transition
+      if (flash) {
+        gsap.timeline()
+          .set(flash, { opacity: 0, display: "block" })
+          .to(flash, { opacity: 1, duration: 0.12, ease: "power2.in" })
+          .to(flash, { opacity: 0, duration: 0.5, ease: "power2.out", delay: 0.08 });
+      }
+
+      setTimeout(() => {
+        videoView.classList.remove("is-active");
+        identityView.classList.add("is-active");
+      }, 200);
+    });
+  }
+
   // Form validation
   const firstEmpty = () =>
     requiredInputs.find((i) => i.value.trim().length === 0);
