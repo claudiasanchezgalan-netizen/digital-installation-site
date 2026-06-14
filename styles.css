@@ -1732,29 +1732,45 @@ a {
   }
 
   .white-room {
-    background: #060608;
+    background: #fcfcfc; /* Clean white for the letterbox area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* --- SVG labels: Neat horizontal row at the top --- */
+  .stars-scene {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+
+  .stars-overlay {
+    /* Ensure SVG fills the new predictable 4:3 container */
+    width: 100%;
+    height: 100%;
+  }
+
+  /* --- SVG labels: Perfectly spaced horizontal row --- */
   .star-svg-label {
     font-size: 32px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     font-weight: 500;
   }
 
-  /* Move Instalación to (680, 150) */
+  /* Move Instalación to exactly X=450 (Translate X: 450 - 320 = 130) */
   .star-label-orange {
-    transform: translate(360px, -556px);
+    transform: translate(130px, -556px);
   }
 
-  /* Move Proyecto to (960, 150) */
+  /* Move Proyecto to exactly X=1000 (Translate X: 1000 - 950 = 50) */
   .star-label-green {
-    transform: translate(10px, -90px);
+    transform: translate(50px, -90px);
   }
 
-  /* Move Galería to (1240, 150) */
+  /* Move Galería to exactly X=1510 (Translate X: 1510 - 1580 = -70) */
   .star-label-yellow {
-    transform: translate(-340px, -456px);
+    transform: translate(-70px, -456px);
   }
 
   /* --- Hint text --- */
