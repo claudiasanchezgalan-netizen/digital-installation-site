@@ -1735,26 +1735,26 @@ a {
     background: #060608;
   }
 
-  /* --- SVG labels: Huge and stacked at the top center --- */
+  /* --- SVG labels: Neat horizontal row at the top --- */
   .star-svg-label {
-    font-size: 52px;
-    letter-spacing: 0.15em;
+    font-size: 32px;
+    letter-spacing: 0.1em;
     font-weight: 500;
   }
 
-  /* Move Instalación from (320, 706) to (960, 160) */
+  /* Move Instalación to (680, 150) */
   .star-label-orange {
-    transform: translate(640px, -546px);
+    transform: translate(360px, -556px);
   }
 
-  /* Move Proyecto from (950, 240) to (960, 280) */
+  /* Move Proyecto to (960, 150) */
   .star-label-green {
-    transform: translate(10px, 40px);
+    transform: translate(10px, -90px);
   }
 
-  /* Move Galería from (1580, 606) to (960, 400) */
+  /* Move Galería to (1240, 150) */
   .star-label-yellow {
-    transform: translate(-620px, -206px);
+    transform: translate(-340px, -456px);
   }
 
   /* --- Hint text --- */
@@ -1918,9 +1918,9 @@ a {
     max-height: 50vh;
   }
 
-  /* --- Make labels even larger on very small screens to counteract heavy scaling --- */
+  /* --- Make labels readable on very small screens --- */
   .star-svg-label {
-    font-size: 64px;
+    font-size: 36px;
   }
 
   .stars-hint-text {
