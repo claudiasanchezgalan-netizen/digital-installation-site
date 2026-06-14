@@ -1726,25 +1726,29 @@ a {
     padding: clamp(3.5rem, 8vh, 5rem) var(--gutter) clamp(2rem, 5vh, 3rem);
   }
 
-  /* --- Stars scene: show all stars on mobile --- */
-  .stars-overlay {
-    /* Switch from 'slice' to 'meet' so side stars are not cropped */
+  /* --- Bring stars inwards to stay visible on tall portrait screens --- */
+  #hotSilla {
+    transform: translate(260px, 0);
+  }
+  
+  #hotCamara {
+    transform: translate(-260px, 0);
   }
 
   .white-room {
-    background: #f5f3ef;
+    background: #060608;
   }
 
-  /* --- Star SVG labels smaller --- */
+  /* --- Star SVG labels --- */
   .star-svg-label {
-    font-size: 14px;
-    letter-spacing: 0.12em;
+    font-size: 16px;
+    letter-spacing: 0.15em;
   }
 
-  /* --- Hint text smaller --- */
+  /* --- Hint text --- */
   .stars-hint-text {
-    font-size: 11px;
-    bottom: 16px;
+    font-size: 13px;
+    bottom: 24px;
     padding: 0 1rem;
   }
 
@@ -1897,6 +1901,15 @@ a {
   .poster-image {
     width: 92vw;
     max-height: 50vh;
+  }
+
+  /* --- Bring stars inwards to stay visible on tall portrait screens --- */
+  #hotSilla {
+    transform: translate(360px, 40px);
+  }
+  
+  #hotCamara {
+    transform: translate(-380px, 30px);
   }
 
   /* --- Star labels even smaller --- */
