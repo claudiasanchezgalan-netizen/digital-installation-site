@@ -1726,16 +1726,25 @@ a {
     padding: clamp(3.5rem, 8vh, 5rem) var(--gutter) clamp(2rem, 5vh, 3rem);
   }
 
+  /* --- Stars scene: show all stars on mobile --- */
+  .stars-overlay {
+    /* Switch from 'slice' to 'meet' so side stars are not cropped */
+  }
+
+  .white-room {
+    background: #f5f3ef;
+  }
+
   /* --- Star SVG labels smaller --- */
   .star-svg-label {
-    font-size: 16px;
-    letter-spacing: 0.15em;
+    font-size: 14px;
+    letter-spacing: 0.12em;
   }
 
   /* --- Hint text smaller --- */
   .stars-hint-text {
-    font-size: 12px;
-    bottom: 20px;
+    font-size: 11px;
+    bottom: 16px;
     padding: 0 1rem;
   }
 
@@ -1748,6 +1757,14 @@ a {
   .video-screen {
     width: 95vw;
     gap: 1.5rem;
+  }
+
+  /* --- Video view vertical centering fix --- */
+  .video-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
   }
 
   /* --- Poster image --- */
@@ -1884,13 +1901,13 @@ a {
 
   /* --- Star labels even smaller --- */
   .star-svg-label {
-    font-size: 13px;
-    letter-spacing: 0.1em;
+    font-size: 11px;
+    letter-spacing: 0.08em;
   }
 
   .stars-hint-text {
-    font-size: 11px;
-    bottom: 12px;
+    font-size: 10px;
+    bottom: 10px;
   }
 
   /* --- Identity modal --- */

@@ -27,6 +27,21 @@
     : [];
 
   // ============================================================
+  // RESPONSIVE SVG — Switch preserveAspectRatio for mobile
+  // ============================================================
+  const starsOverlay = document.querySelector(".stars-overlay");
+  const updateSVGAspect = () => {
+    if (!starsOverlay) return;
+    if (window.innerWidth <= 720) {
+      starsOverlay.setAttribute("preserveAspectRatio", "xMidYMid meet");
+    } else {
+      starsOverlay.setAttribute("preserveAspectRatio", "xMidYMid slice");
+    }
+  };
+  updateSVGAspect();
+  window.addEventListener("resize", updateSVGAspect);
+
+  // ============================================================
   // INTRO ANIMATIONS (GSAP)
   // ============================================================
 
