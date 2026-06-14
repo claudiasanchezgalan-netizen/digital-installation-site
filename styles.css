@@ -1726,24 +1726,35 @@ a {
     padding: clamp(3.5rem, 8vh, 5rem) var(--gutter) clamp(2rem, 5vh, 3rem);
   }
 
-  /* --- Move stars to the sky area to avoid overlapping the child and stay visible --- */
-  #hotSilla {
-    transform: translate(180px, -350px);
-  }
-  
-  #hotCamara {
-    transform: translate(-190px, -250px);
+  /* --- Keep the stars attached to their background painting! --- */
+  #hotSilla, #hotCamara {
+    transform: none;
   }
 
   .white-room {
     background: #060608;
   }
 
-  /* --- Star SVG labels larger for mobile (counteracts SVG scaling) --- */
+  /* --- SVG labels: Huge and stacked at the top center --- */
   .star-svg-label {
-    font-size: 34px;
-    letter-spacing: 0.12em;
+    font-size: 52px;
+    letter-spacing: 0.15em;
     font-weight: 500;
+  }
+
+  /* Move Instalación from (320, 706) to (960, 160) */
+  .star-label-orange {
+    transform: translate(640px, -546px);
+  }
+
+  /* Move Proyecto from (950, 240) to (960, 280) */
+  .star-label-green {
+    transform: translate(10px, 40px);
+  }
+
+  /* Move Galería from (1580, 606) to (960, 400) */
+  .star-label-yellow {
+    transform: translate(-620px, -206px);
   }
 
   /* --- Hint text --- */
@@ -1753,6 +1764,7 @@ a {
     padding: 0 1rem;
     font-weight: 400;
     opacity: 0.7;
+    display: none; /* Hide on mobile since the text buttons are obvious */
   }
 
   /* --- Video single responsive --- */
@@ -1906,24 +1918,13 @@ a {
     max-height: 50vh;
   }
 
-  /* --- Move stars to the sky area on very small screens --- */
-  #hotSilla {
-    transform: translate(220px, -380px);
-  }
-  
-  #hotCamara {
-    transform: translate(-220px, -280px);
-  }
-
-  /* --- Star labels --- */
+  /* --- Make labels even larger on very small screens to counteract heavy scaling --- */
   .star-svg-label {
-    font-size: 28px;
-    letter-spacing: 0.1em;
+    font-size: 64px;
   }
 
   .stars-hint-text {
-    font-size: 12px;
-    bottom: 16px;
+    display: none;
   }
 
   /* --- Identity modal --- */
