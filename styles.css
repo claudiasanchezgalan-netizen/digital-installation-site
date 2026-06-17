@@ -1198,10 +1198,8 @@ a {
   cursor: pointer;
 }
 
-/* Landscape images in second row: fill line equally, uncropped */
+/* Landscape images: just let them size naturally with width: auto */
 .folder-overlay-body img.is-landscape {
-  flex: 1 1 0;
-  min-width: 0;
   object-fit: contain;
 }
 
