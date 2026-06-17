@@ -1361,7 +1361,7 @@ a {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: #060608;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1473,7 +1473,6 @@ a {
 /* Responsive star text labels (optimized for legibility on white paper background) */
 .star-svg-label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 24px;
   fill: #2c2c35;
   font-weight: 400;
   letter-spacing: 0.22em;
@@ -1497,6 +1496,7 @@ a {
   font-size: 15px;
   color: #000000;
   opacity: 0.45;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6);
   letter-spacing: 0.04em;
   z-index: 20;
   pointer-events: none;
