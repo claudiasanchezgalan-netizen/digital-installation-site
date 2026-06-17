@@ -358,6 +358,22 @@
 
 
   <script src="main.js"></script>
+  <script>
+    // Enforce "meet" scaling on desktop to prevent any cropping of the artwork or edge text.
+    // Enforce "slice" on mobile to keep the full-bleed vertical layout the user requested.
+    function updateSvgAspect() {
+      const svg = document.querySelector('.stars-overlay');
+      if (svg) {
+        if (window.innerWidth <= 720) {
+          svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+        } else {
+          svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        }
+      }
+    }
+    window.addEventListener('resize', updateSvgAspect);
+    updateSvgAspect();
+  </script>
 </body>
 
 </html>
