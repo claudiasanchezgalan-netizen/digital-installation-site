@@ -1765,19 +1765,19 @@ a {
     font-weight: 500;
   }
 
-  /* Move Instalación to exactly X=960, Y=100 (Translate X: 960 - 320 = 640) */
+  /* Move Instalación to exactly X=960, Y=120 (Translate X: 960 - 220 = 740) */
   .star-label-orange {
-    transform: translate(640px, -606px);
+    transform: translate(740px, -586px);
   }
 
-  /* Move Proyecto to exactly X=960, Y=150 (Translate X: 960 - 950 = 10) */
+  /* Move Proyecto to exactly X=960, Y=180 (Translate X: 960 - 950 = 10) */
   .star-label-green {
-    transform: translate(10px, -90px);
+    transform: translate(10px, 80px);
   }
 
-  /* Move Galería to exactly X=960, Y=200 (Translate X: 960 - 1580 = -620) */
+  /* Move Galería to exactly X=960, Y=240 (Translate X: 960 - 1700 = -740) */
   .star-label-yellow {
-    transform: translate(-620px, -406px);
+    transform: translate(-740px, -366px);
   }
 
   /* --- Hint text --- */
